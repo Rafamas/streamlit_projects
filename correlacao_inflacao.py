@@ -1,6 +1,5 @@
 import requests as req
 import pandas as pd
-import pyodbc
 import seaborn as sn
 import time
 from time import sleep
