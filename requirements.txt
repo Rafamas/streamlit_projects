@@ -1,0 +1,7 @@
+pandas
+seaborn
+bs4
+webdriver_manager
+numpy
+streamlit
+chromedriver_autoinstaller
