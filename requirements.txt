@@ -1,4 +1,5 @@
 pandas
+selenium
 seaborn
 bs4
 webdriver_manager
