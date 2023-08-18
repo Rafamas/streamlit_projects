@@ -14,6 +14,8 @@ def heatmap(df):
     plot = sns.heatmap(correlation,annot = True, fmt = ".1f", linewidths = .6)
     return plot
 
+st.title('Correlação entre IPCA, IGPM, INCC e tabela FIPE')
+
 ano_inicio = st.number_input("Digite o ano de início:", min_value = 1995)
 ano_fim = st.number_input("Digite o ano de fim:", max_value = datetime.now().year)
 
