@@ -11,7 +11,7 @@ def faixa_data(ano_incio,ano_fim,df):
     return df_filtrado
 
 def heatmap(df):
-    plot = sns.heatmap(correlation,annot = True, fmt = ".1f", linewidths = .6, square=True)
+    plot = sns.heatmap(correlation,annot = True, fmt = ".1f", square=True)
     return plot
 
 st.title('Correlação entre IPCA, IGPM, INCC e tabela FIPE')
