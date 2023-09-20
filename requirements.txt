@@ -1,7 +1,7 @@
 pandas
 openpyxl
 selenium
-seaborn
+seaborn == 0.12.2
 bs4
 webdriver_manager
 numpy
