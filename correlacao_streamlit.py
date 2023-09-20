@@ -25,5 +25,5 @@ correlation = def_valores[['IGPM','IPCA','INCC','Habit.','Aliment.','Transp.','D
 gerar_grafico = st.button('Gerar Heatmap')
 
 if gerar_grafico:
-    tabela = heatmap(def_valores)
+    tabela = heatmap(correlation)
     st.pyplot(tabela.get_figure())
