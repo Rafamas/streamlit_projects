@@ -28,4 +28,4 @@ gerar_grafico = st.button('Gerar Heatmap')
 
 if gerar_grafico:
     tabela = heatmap(correlation)
-    st.plot_chart(tabela)
+    st.plotly_chart(tabela)
