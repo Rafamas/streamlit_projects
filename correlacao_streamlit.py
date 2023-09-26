@@ -14,7 +14,7 @@ def faixa_data(ano_incio,ano_fim,df):
 def heatmap(df):
     plot = px.imshow(df, color_continuous_scale = 'reds')
     plot.update_layout(title='Mapa de Calor')
-    return plot.show()
+    return plot
 
 st.title('Correlação entre IPCA, IGPM, INCC e tabela FIPE')
 
@@ -28,4 +28,4 @@ gerar_grafico = st.button('Gerar Heatmap')
 
 if gerar_grafico:
     tabela = heatmap(correlation)
-    st.pyplot(tabela.get_figure())
+    st.plot_chart(tabela)
