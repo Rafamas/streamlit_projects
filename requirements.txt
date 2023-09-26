@@ -8,3 +8,4 @@ webdriver_manager
 numpy
 streamlit
 chromedriver_autoinstaller
+plotly
