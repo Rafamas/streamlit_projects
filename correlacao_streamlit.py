@@ -2,6 +2,7 @@ import pandas as pd
 import seaborn as sns
 import streamlit as st
 from datetime import datetime 
+import plotly.express as px
 
 concat_excel = 'concat.xlsx'
 df_concat = pd.read_excel(concat_excel)
@@ -11,8 +12,9 @@ def faixa_data(ano_incio,ano_fim,df):
     return df_filtrado
 
 def heatmap(df):
-    plot = sns.heatmap(correlation,annot = True, fmt = ".1f", square=True)
-    return plot
+    plot = px.imshow(df, color_continuous_scale = 'reds')
+    plot.update_layout(title='Mapa de Calor')
+    return plot.show()
 
 st.title('Correlação entre IPCA, IGPM, INCC e tabela FIPE')
 
