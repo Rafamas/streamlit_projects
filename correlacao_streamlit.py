@@ -22,7 +22,8 @@ ano_inicio = st.number_input("Digite o ano de início:", min_value = 1995)
 ano_fim = st.number_input("Digite o ano de fim:", max_value = datetime.now().year)
 
 df_valores = faixa_data(ano_inicio,ano_fim,df_concat)
-correlation = df_valores.drop('data',axis=1).corr()
+lista_drop = ['data','ano','mes']
+correlation = df_valores.drop(lista_drop,axis=1).corr()
 
 gerar_grafico = st.button('Gerar Heatmap')
 
