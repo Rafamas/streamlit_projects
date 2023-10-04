@@ -20,11 +20,9 @@ def heatmap(df):
     return plot
 
 def grafico_linha(df,x,y):
-    #fig = px.line(df_concat, x=x, y=y, 
-    #          title='Gráfico de Linha com Múltiplas Séries')
     
     fig = make_subplots(specs=[[{"secondary_y": True}]])
-    fig.update_layout(title_text="Gráfico com Múltiplas Séries em Y")
+    fig.update_layout(title_text="Comportamento dos parâmetros selecionados")
 
     lista_segundo_eixo = ['energia_comercial','energia_residencial','energia_industrial','energia_outros','energia_total']
 
@@ -34,8 +32,8 @@ def grafico_linha(df,x,y):
         else:
             fig.add_trace(go.Scatter(x=list(df[x]), y=list(df[serie]), mode='lines', name=serie, yaxis='y1'), secondary_y=False)
 
-    fig.update_yaxes(title_text="Eixo Y Principal", secondary_y=False)       
-    fig.update_yaxes(title_text='Eixo Y secundário', secondary_y=True)
+    fig.update_yaxes(title_text="Variação IPCA, IGPM, INCC e FIPE", secondary_y=False)       
+    fig.update_yaxes(title_text='GWh', secondary_y=True)
     return fig
 
 st.title('Correlação entre IPCA, IGPM, INCC, consumo de energia  e tabela FIPE')
