@@ -16,6 +16,11 @@ def heatmap(df):
     plot.update_layout(title='Mapa de Calor')
     return plot
 
+def grafico_linha(df,x,y):
+    fig = px.line(df_concat, x=x, y=y, 
+              title='Gráfico de Linha com Múltiplas Séries')
+    fig.show()
+
 st.title('Correlação entre IPCA, IGPM, INCC, consumo de energia  e tabela FIPE')
 
 ano_inicio = st.number_input("Digite o ano de início:", min_value = 1995)
@@ -36,4 +41,10 @@ option = st.multiselect(
     'Quais parâmetros apresentar no gráfico de linhas?',
      list(valores_drop.columns))
 
-'Você selecionou: ', option
+st.write('Opções selecionadas: ', option)
+
+gerar_grafico_linha = st.button('Gerar Gráfico de linhas')
+
+if gerar_grafico_linha:
+    grafico = grafico_linha(df_valores,'data',option)
+    st.plotly_chart(grafico)
