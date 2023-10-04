@@ -3,6 +3,8 @@ import seaborn as sns
 import streamlit as st
 from datetime import datetime 
 import plotly.express as px
+import plotly.subplots as sp
+import plotly.graph_objs as go
 
 concat_excel = 'concat.xlsx'
 df_concat = pd.read_excel(concat_excel)
@@ -25,7 +27,7 @@ def grafico_linha(df,x,y):
     if len(y) > 1:
         for serie in y[1:]:
             if serie in lista_segundo_eixo:
-                fig.add_trace(px.line(df,x=x,y=serie))
+                fig.add_trace(go.Scatter(x=df[x], y=df[serie], mode='lines', name=serie, yaxis='y2'))
             fig.update_yaxes(title_text='Eixo Y secundário', secondary_y=True)
     return fig
 
