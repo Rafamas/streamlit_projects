@@ -21,8 +21,8 @@ st.title('Correlação entre IPCA, IGPM, INCC e tabela FIPE')
 ano_inicio = st.number_input("Digite o ano de início:", min_value = 1995)
 ano_fim = st.number_input("Digite o ano de fim:", max_value = datetime.now().year)
 
-def_valores = faixa_data(ano_inicio,ano_fim,df_concat)
-correlation = def_valores[['IGPM','IPCA','INCC','Habit.','Aliment.','Transp.','Desp.','Saúde','Vest.','Educ.','Geral']].corr()
+df_valores = faixa_data(ano_inicio,ano_fim,df_concat)
+correlation = df_valores.drop('data',axis=1).corr()
 
 gerar_grafico = st.button('Gerar Heatmap')
 
