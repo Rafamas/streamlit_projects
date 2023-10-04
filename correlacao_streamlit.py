@@ -19,7 +19,7 @@ def heatmap(df):
 def grafico_linha(df,x,y):
     fig = px.line(df_concat, x=x, y=y, 
               title='Gráfico de Linha com Múltiplas Séries')
-    fig.show()
+    return fig
 
 st.title('Correlação entre IPCA, IGPM, INCC, consumo de energia  e tabela FIPE')
 
