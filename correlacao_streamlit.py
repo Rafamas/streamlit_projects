@@ -32,7 +32,7 @@ if gerar_grafico:
     tabela = heatmap(correlation)
     st.plotly_chart(tabela)
 
-option = st.selectbox(
+option = st.multiselect(
     'Quais parâmetros apresentar no gráfico de linhas?',
      list(valores_drop.columns))
 
