@@ -28,7 +28,7 @@ def grafico_linha(df,x,y):
         for serie in y[1:]:
             if serie in lista_segundo_eixo:
                 fig.add_trace(go.Scatter(x=df[x], y=df[serie], mode='lines', name=serie, yaxis='y2'))
-            fig.update_yaxes(title_text='Eixo Y secundário', secondary_y=True)
+    fig.update_yaxes(title_text='Eixo Y secundário', secondary_y=True)
     return fig
 
 st.title('Correlação entre IPCA, IGPM, INCC, consumo de energia  e tabela FIPE')
