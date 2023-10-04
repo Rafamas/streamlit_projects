@@ -19,6 +19,14 @@ def heatmap(df):
 def grafico_linha(df,x,y):
     fig = px.line(df_concat, x=x, y=y, 
               title='Gráfico de Linha com Múltiplas Séries')
+    
+    lista_segundo_eixo = ['energia_comercial','energia_residencial','energia_industrial','energia_outros','energia_total']
+
+    if len(y) > 1:
+        for serie in y[1:]:
+            if serie in lista_segundo_eixo:
+                fig.add_trace(px.line(df,x=x,y=serie))
+            fig.update_yaxes(title_text='Eixo Y secundário', secondary_y=True)
     return fig
 
 st.title('Correlação entre IPCA, IGPM, INCC, consumo de energia  e tabela FIPE')
@@ -46,5 +54,5 @@ st.write('Opções selecionadas: ', option)
 gerar_grafico_linha = st.button('Gerar Gráfico de linhas')
 
 if gerar_grafico_linha:
-    grafico = grafico_linha(df_valores,'data',list(option))
+    grafico = grafico_linha(df_valores,'data',option)
     st.plotly_chart(grafico)
