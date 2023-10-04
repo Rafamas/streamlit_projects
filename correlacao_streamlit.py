@@ -46,5 +46,5 @@ st.write('Opções selecionadas: ', option)
 gerar_grafico_linha = st.button('Gerar Gráfico de linhas')
 
 if gerar_grafico_linha:
-    grafico = grafico_linha(df_valores,'data',option)
+    grafico = grafico_linha(df_valores,'data',list(option))
     st.plotly_chart(grafico)
