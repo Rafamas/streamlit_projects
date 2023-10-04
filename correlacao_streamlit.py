@@ -30,9 +30,9 @@ def grafico_linha(df,x,y):
 
     for serie in y:
         if serie in lista_segundo_eixo:
-            fig.add_trace(go.Scatter(x=df[x], y=df[serie], mode='lines', name=serie, yaxis='y2'), secondary_y=True)
+            fig.add_trace(go.Scatter(x=list(df[x]), y=list(df[serie]), mode='lines', name=serie, yaxis='y2'), secondary_y=True)
         else:
-            fig.add_trace(go.Scatter(x=df[x], y=df[serie], mode='lines', name=serie, yaxis='y1'), secondary_y=False)
+            fig.add_trace(go.Scatter(x=list(df[x]), y=list(df[serie]), mode='lines', name=serie, yaxis='y1'), secondary_y=False)
 
     fig.update_yaxes(title_text="Eixo Y Principal", secondary_y=False)       
     fig.update_yaxes(title_text='Eixo Y secundário', secondary_y=True)
