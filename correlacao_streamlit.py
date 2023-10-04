@@ -16,17 +16,24 @@ def heatmap(df):
     plot.update_layout(title='Mapa de Calor')
     return plot
 
-st.title('Correlação entre IPCA, IGPM, INCC e tabela FIPE')
+st.title('Correlação entre IPCA, IGPM, INCC, consumo de energia  e tabela FIPE')
 
 ano_inicio = st.number_input("Digite o ano de início:", min_value = 1995)
 ano_fim = st.number_input("Digite o ano de fim:", max_value = datetime.now().year)
 
 df_valores = faixa_data(ano_inicio,ano_fim,df_concat)
 lista_drop = ['data','ano','mes']
-correlation = df_valores.drop(lista_drop,axis=1).corr()
+valores_drop = df_valores.drop(lista_drop,axis=1)
+correlation = valores_drop.corr()
 
 gerar_grafico = st.button('Gerar Heatmap')
 
 if gerar_grafico:
     tabela = heatmap(correlation)
     st.plotly_chart(tabela)
+
+option = st.selectbox(
+    'Quais parâmetros apresentar no gráfico de linhas?',
+     list(valores_drop.columns))
+
+'Você selecionou: ', option
