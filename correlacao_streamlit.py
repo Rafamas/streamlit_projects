@@ -5,6 +5,7 @@ from datetime import datetime
 import plotly.express as px
 import plotly.subplots as sp
 import plotly.graph_objs as go
+from plotly.subplots import make_subplots
 
 concat_excel = 'concat.xlsx'
 df_concat = pd.read_excel(concat_excel)
@@ -19,15 +20,21 @@ def heatmap(df):
     return plot
 
 def grafico_linha(df,x,y):
-    fig = px.line(df_concat, x=x, y=y, 
-              title='Gráfico de Linha com Múltiplas Séries')
+    #fig = px.line(df_concat, x=x, y=y, 
+    #          title='Gráfico de Linha com Múltiplas Séries')
     
+    fig = make_subplots(specs=[[{"secondary_y": True}]])
+    fig.update_layout(title_text="Gráfico com Múltiplas Séries em Y")
+
     lista_segundo_eixo = ['energia_comercial','energia_residencial','energia_industrial','energia_outros','energia_total']
 
-    if len(y) > 1:
-        for serie in y[1:]:
-            if serie in lista_segundo_eixo:
-                fig.add_trace(go.Scatter(x=df[x], y=df[serie], mode='lines', name=serie, yaxis='y2', secondary_y=True))
+    for serie in y:
+        if serie in lista_segundo_eixo:
+            fig.add_trace(go.Scatter(x=df[x], y=df[serie], mode='lines', name=serie, yaxis='y2'), secondary_y=True)
+        else:
+            fig.add_trace(go.Scatter(x=df[x], y=df[serie], mode='lines', name=serie, yaxis='y1'), secondary_y=False)
+
+    fig.update_yaxes(title_text="Eixo Y Principal", secondary_y=False)       
     fig.update_yaxes(title_text='Eixo Y secundário', secondary_y=True)
     return fig
 
